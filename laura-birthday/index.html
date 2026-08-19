@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eine kleine Geburtstagsüberraschung für Laura.">
+  <title>Happy Birthday Laura ❤️</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <button class="music-toggle" id="musicToggle" type="button" aria-label="Musik ein- oder ausschalten" title="Musik">
+    <span id="musicIcon">🔇</span>
+  </button>
+  <audio id="backgroundMusic" preload="none" loop>
+    <!-- TODO: Eigene Musikdatei in assets/music/ ablegen und den Dateinamen hier anpassen. -->
+    <source src="assets/music/laura-song.mp3" type="audio/mpeg">
+  </audio>
+
+  <header class="hero" id="home">
+    <div class="hero-glow hero-glow-one"></div>
+    <div class="hero-glow hero-glow-two"></div>
+
+    <div class="hero-content">
+      <h1>Happy Birthday<br><span>Laura ❤️</span></h1>
+      <p class="hero-text">Ich habe dir etwas Kleines gebaut&nbsp;...</p>
+      <button class="primary-button" id="openSurpriseButton" type="button">
+        Deine Überraschung öffnen <span aria-hidden="true">🎁</span>
+      </button>
+    </div>
+
+    <button class="secret-heart secret-heart-hero" id="secretHeart" type="button" aria-label="Verstecktes Herz">♥</button>
+  </header>
+
+  <main class="experience" id="experience" aria-hidden="true">
+    <section class="section welcome reveal-on-scroll">
+      <div class="section-shell centered-shell">
+        <h2>Alles Gute zum Geburtstag ❤️</h2>
+        <!-- TODO: Persönliche Begrüßung für Laura einfügen. -->
+        <p class="intro-copy">
+          Eine kleine digitale Geschenkkarte für dich, damit du sie immer wieder öffnen kannst, wann immer dir danach ist. ❤️
+        </p>
+        <button class="primary-button welcome-button" id="giftsButton" type="button">
+          Weiter...
+        </button>
+      </div>
+    </section>
+
+    <section class="section gifts-section reveal-on-scroll" id="gifts">
+      <div class="section-shell centered-shell">
+        <button class="primary-button" id="letterButton" type="button">
+          Brief öffnen
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Made with <button class="footer-heart" id="footerHeart" type="button" aria-label="Herz">❤️</button> for Laura</p>
+    <span>Happy Birthday 🎂</span>
+  </footer>
+
+  <div class="modal" id="contentModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" type="button" data-close-modal aria-label="Fenster schließen">×</button>
+      <div class="modal-icon" id="modalIcon" aria-hidden="true">❤️</div>
+      <h3 id="modalTitle">Überraschung</h3>
+      <p id="modalContent">Dieses Geschenk wird bald enthüllt ❤️</p>
+      <img class="modal-image" id="modalImage" alt="" hidden>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

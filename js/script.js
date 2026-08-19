@@ -48,6 +48,7 @@ const elements = {
   modalTitle: document.querySelector("#modalTitle"),
   modalContent: document.querySelector("#modalContent"),
   modalImage: document.querySelector("#modalImage"),
+  modalPanel: document.querySelector(".modal-panel"),
   toast: document.querySelector("#toast"),
   confettiCanvas: document.querySelector("#confettiCanvas"),
   secretHeart: document.querySelector("#secretHeart"),
@@ -163,6 +164,8 @@ function openModal(title, content, icon = "❤️", imageSrc = "") {
   elements.modalContent.textContent = content;
   elements.modalImage.hidden = !imageSrc;
   elements.modalImage.src = imageSrc;
+  elements.modalPanel.classList.toggle("has-background-image", Boolean(imageSrc));
+  elements.modalPanel.style.backgroundImage = imageSrc ? `url("${imageSrc}")` : "";
   elements.modal.classList.add("is-visible");
   elements.modal.setAttribute("aria-hidden", "false");
   document.body.classList.add("modal-open");
@@ -218,8 +221,7 @@ function setupScrollReveal() {
 function setupWelcomeSlideshow() {
   const images = [
     "assets/images/moment1 (1).jpeg",
-    "assets/images/moment2.jpeg",
-    "assets/images/moment3.jpeg"
+    "assets/images/moment2.jpeg"
   ];
   let imageIndex = 0;
 

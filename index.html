@@ -49,8 +49,13 @@
 
     <section class="section gifts-section reveal-on-scroll" id="gifts">
       <div class="section-shell centered-shell">
-        <button class="primary-button" id="letterButton" type="button">
-          Brief öffnen
+        <button class="gift-card gift-popup-trigger" id="giftPopupButton" type="button">
+          <span class="gift-box" aria-hidden="true">🎁</span>
+          <span class="gift-card-title">Ein Geschenk für dich</span>
+        </button>
+        <button class="primary-button gift-card gift-popup-trigger letter-button" id="letterButton" type="button">
+          <span class="gift-box letter-icon" aria-hidden="true">💌</span>
+          <span class="gift-card-title">Brief öffnen</span>
         </button>
       </div>
     </section>
@@ -69,7 +74,6 @@
       <div class="modal-icon" id="modalIcon" aria-hidden="true">❤️</div>
       <h3 id="modalTitle">Überraschung</h3>
       <p id="modalContent">Dieses Geschenk wird bald enthüllt ❤️</p>
-      <img class="modal-image" id="modalImage" alt="" hidden>
     </div>
   </div>
 

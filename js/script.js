@@ -39,6 +39,7 @@ const state = {
 const elements = {
   openSurpriseButton: document.querySelector("#openSurpriseButton"),
   giftsButton: document.querySelector("#giftsButton"),
+  giftPopupButton: document.querySelector("#giftPopupButton"),
   letterButton: document.querySelector("#letterButton"),
   experience: document.querySelector("#experience"),
   welcomeSection: document.querySelector(".section.welcome"),
@@ -130,6 +131,16 @@ function openLetter() {
   );
 }
 
+function openGiftPopup() {
+  launchConfetti(80);
+  openModal(
+    "",
+    "Ich freue mich auf einem gemeinsamen Abend mit dir ❤️",
+    "",
+    "assets/images/gutschein.png"
+  );
+}
+
 function handleGiftClick(event) {
   const card = event.target.closest("[data-gift-id]");
   if (!card) return;
@@ -162,9 +173,13 @@ function openModal(title, content, icon = "❤️", imageSrc = "") {
   elements.modalTitle.textContent = title;
   elements.modalTitle.hidden = !title;
   elements.modalContent.textContent = content;
-  elements.modalImage.hidden = !imageSrc;
-  elements.modalImage.src = imageSrc;
+  elements.modalContent.hidden = !content;
+  if (elements.modalImage) {
+    elements.modalImage.hidden = !imageSrc;
+    elements.modalImage.src = imageSrc;
+  }
   elements.modalPanel.classList.toggle("has-background-image", Boolean(imageSrc));
+  elements.modalPanel.classList.toggle("gift-modal", imageSrc.includes("gutschein"));
   elements.modalPanel.style.backgroundImage = imageSrc ? `url("${imageSrc}")` : "";
   elements.modal.classList.add("is-visible");
   elements.modal.setAttribute("aria-hidden", "false");
@@ -216,24 +231,6 @@ function setupScrollReveal() {
   }, { threshold: 0.15 });
 
   sections.forEach(section => observer.observe(section));
-}
-
-function setupWelcomeSlideshow() {
-  const images = [
-    "assets/images/moment1 (1).jpeg",
-    "assets/images/moment2.jpeg"
-  ];
-  let imageIndex = 0;
-
-  images.slice(1).forEach(imagePath => {
-    const image = new Image();
-    image.src = imagePath;
-  });
-
-  window.setInterval(() => {
-    imageIndex = (imageIndex + 1) % images.length;
-    elements.welcomeSection.style.backgroundImage = `url("${images[imageIndex]}")`;
-  }, 5000);
 }
 
 function triggerSecretHeart() {
@@ -367,6 +364,7 @@ function handleKeydown(event) {
 function bindEvents() {
   elements.openSurpriseButton.addEventListener("click", openExperience);
   elements.giftsButton.addEventListener("click", openGifts);
+  elements.giftPopupButton.addEventListener("click", openGiftPopup);
   elements.letterButton.addEventListener("click", openLetter);
   elements.giftGrid?.addEventListener("click", handleGiftClick);
   elements.momentsGrid?.addEventListener("click", handleMomentClick);
@@ -385,7 +383,6 @@ function bindEvents() {
 
 function init() {
   setupScrollReveal();
-  setupWelcomeSlideshow();
   bindEvents();
 }
 

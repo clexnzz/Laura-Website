@@ -26,7 +26,7 @@
       <h1>Happy Birthday<br><span>Laura ❤️</span></h1>
       <p class="hero-text">Ich habe dir etwas Kleines gebaut&nbsp;...</p>
       <button class="primary-button" id="openSurpriseButton" type="button">
-        Deine Überraschung öffnen <span aria-hidden="true">🎁</span>
+        Überraschung öffnen <span aria-hidden="true">🎁</span>
       </button>
     </div>
 
@@ -49,14 +49,28 @@
 
     <section class="section gifts-section reveal-on-scroll" id="gifts">
       <div class="section-shell centered-shell">
-        <button class="gift-card gift-popup-trigger" id="giftPopupButton" type="button">
-          <span class="gift-box" aria-hidden="true">🎁</span>
-          <span class="gift-card-title">Ein Geschenk für dich</span>
-        </button>
+        <div class="page-intro-box">Und hier warten noch ein paar kleine digitale Überraschungen auf dich ❤️</div>
+        <div class="coupon-row">
+          <button class="gift-card gift-popup-trigger main-coupon" id="giftPopupButton" type="button" data-gift-image="assets/images/gutschein.png">
+            <span class="gift-box" aria-hidden="true">🎁</span>
+            <span class="gift-card-title">Ein Geschenk für dich</span>
+          </button>
+        </div>
         <button class="primary-button gift-card gift-popup-trigger letter-button" id="letterButton" type="button">
           <span class="gift-box letter-icon" aria-hidden="true">💌</span>
           <span class="gift-card-title">Brief öffnen</span>
         </button>
+        <div class="cake-video-box">
+          <p>Falls du dich eigentlich fragst, wie das mit der Torte gelaufen ist ...</p>
+          <div class="cake-video">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/EMCxQ5siOiM"
+              title="Das Torten-Video"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -74,6 +88,7 @@
       <div class="modal-icon" id="modalIcon" aria-hidden="true">❤️</div>
       <h3 id="modalTitle">Überraschung</h3>
       <p id="modalContent">Dieses Geschenk wird bald enthüllt ❤️</p>
+      <div class="modal-actions" id="modalActions" aria-live="polite"></div>
     </div>
   </div>
 

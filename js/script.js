@@ -33,14 +33,21 @@ const gifts = [
 const state = {
   surpriseOpened: false,
   sparkClicks: 0,
-  musicPlaying: false
+  musicPlaying: false,
+  voucherIndex: 0
 };
+
+const voucherImages = [
+  "assets/images/gutschein.png",
+  "assets/images/gutschein2.png"
+];
 
 const elements = {
   openSurpriseButton: document.querySelector("#openSurpriseButton"),
   giftsButton: document.querySelector("#giftsButton"),
   giftPopupButton: document.querySelector("#giftPopupButton"),
   letterButton: document.querySelector("#letterButton"),
+  modalActions: document.querySelector("#modalActions"),
   experience: document.querySelector("#experience"),
   welcomeSection: document.querySelector(".section.welcome"),
   giftGrid: document.querySelector("#giftGrid"),
@@ -131,14 +138,49 @@ function openLetter() {
   );
 }
 
-function openGiftPopup() {
-  launchConfetti(80);
+function showSecondVoucherButton() {
+  if (!elements.modalActions) return;
+
+  elements.modalActions.innerHTML = "";
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "secondary-voucher-button";
+  button.textContent = "Gutschein 2 öffnen";
+  button.addEventListener("click", () => {
+    openSecondVoucher();
+  });
+
+  elements.modalActions.appendChild(button);
+}
+
+function hideSecondVoucherButton() {
+  if (!elements.modalActions) return;
+  elements.modalActions.innerHTML = "";
+}
+
+function openSecondVoucher() {
+  state.voucherIndex = 1;
   openModal(
     "",
-    "Ich freue mich auf einem gemeinsamen Abend mit dir ❤️",
     "",
-    "assets/images/gutschein.png"
+    "",
+    voucherImages[1]
   );
+  hideSecondVoucherButton();
+}
+
+function openGiftPopup() {
+  const imageSrc = voucherImages[0];
+
+  state.voucherIndex = 0;
+  openModal(
+    "",
+    "Ich freue mich auf einen gemeinsamen Abend mit dir",
+    "",
+    imageSrc
+  );
+  showSecondVoucherButton();
 }
 
 function handleGiftClick(event) {
@@ -190,6 +232,7 @@ function openModal(title, content, icon = "❤️", imageSrc = "") {
 }
 
 function closeModal() {
+  hideSecondVoucherButton();
   elements.modal.classList.remove("is-visible");
   elements.modal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("modal-open");

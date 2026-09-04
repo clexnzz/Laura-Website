@@ -177,6 +177,41 @@ body.modal-open {
   box-shadow: 0 18px 55px rgba(114, 68, 84, .09);
 }
 
+.cake-video-box {
+  width: min(100%, 520px);
+  margin-top: 42px;
+  padding: 22px 24px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 253, 249, .78);
+  box-shadow: 0 14px 40px rgba(114, 68, 84, .1);
+}
+
+.cake-video-box p {
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.cake-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 18px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 14px 40px rgba(114, 68, 84, .14);
+  overflow: hidden;
+}
+
+.cake-video iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
 .hero-hint {
   margin: 16px 0 0;
   color: #9a858b;
@@ -336,6 +371,7 @@ body.modal-open {
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  padding-block: clamp(56px, 8vw, 110px);
 }
 
 .section.welcome::before {
@@ -354,6 +390,7 @@ body.modal-open {
   border-radius: var(--radius-md);
   background: rgba(255, 253, 249, .78);
   box-shadow: 0 18px 55px rgba(52, 37, 42, .12);
+  transform: translateY(clamp(-280px, -25vh, -150px));
 }
 
 .section.welcome .intro-copy {
@@ -450,6 +487,17 @@ body.modal-open {
   background-repeat: no-repeat;
   position: relative;
   isolation: isolate;
+  padding-block: clamp(56px, 8vw, 110px);
+}
+
+.gifts-section::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 34px;
+  background: linear-gradient(to bottom, rgba(255, 250, 245, .9), transparent);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .gifts-section::before {
@@ -469,6 +517,36 @@ body.modal-open {
   display: grid;
   justify-items: center;
   gap: 6px;
+}
+
+.coupon-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  width: min(100%, 760px);
+}
+
+.main-coupon {
+  width: min(100%, 360px);
+  min-height: 280px;
+}
+
+.page-intro-box {
+  width: min(100%, 520px);
+  margin-bottom: 18px;
+  padding: 14px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 253, 249, .82);
+  box-shadow: 0 12px 34px rgba(114, 68, 84, .1);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
+  transform: translateY(-clamp(240px, 28vh, 320px));
 }
 
 .gift-grid {
@@ -506,6 +584,27 @@ body.modal-open {
   color: var(--ink);
   text-align: center;
   background: transparent;
+}
+
+.small-gift-button {
+  width: min(100%, 126px);
+  min-height: 126px;
+  padding: 12px 10px;
+  margin-top: 0;
+  border-radius: 22px;
+  background: rgba(255, 253, 249, 0.8);
+}
+
+.small-gift-button .gift-box {
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 8px;
+  font-size: 1.5rem;
+}
+
+.small-gift-button .gift-card-title {
+  font-size: .7rem;
+  line-height: 1.2;
 }
 
 .gift-card-title {
@@ -745,9 +844,10 @@ body.modal-open {
 }
 
 .modal-panel.gift-modal {
-  width: min(100%, 960px);
-  aspect-ratio: 3 / 2;
-  max-height: min(90svh, 640px);
+  width: min(100%, 620px);
+  aspect-ratio: 2 / 3;
+  max-height: 90svh;
+  overflow: visible;
   padding: 0;
   background-size: 100% 100%;
 }
@@ -761,6 +861,34 @@ body.modal-open {
   color: white;
   text-align: center;
   text-shadow: 0 2px 8px rgba(0, 0, 0, .9);
+}
+
+.modal-panel.gift-modal .modal-close {
+  top: -54px;
+  bottom: auto;
+  right: auto;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+}
+
+.modal-panel.gift-modal .modal-actions {
+  position: absolute;
+  top: 2%;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  margin-top: 0;
+}
+
+.modal-panel.gift-modal .secondary-voucher-button {
+  box-shadow: none;
+  transition: none;
+}
+
+.modal-panel.gift-modal .secondary-voucher-button:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 .modal-close {
@@ -787,6 +915,29 @@ body.modal-open {
   font-size: 2rem;
 }
 
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.secondary-voucher-button {
+  padding: 12px 18px;
+  border: 1px solid rgba(169, 60, 96, .18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .7);
+  color: var(--rose-700);
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(114, 68, 84, .08);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.secondary-voucher-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(114, 68, 84, .12);
+}
+
 .modal p {
   margin: 14px 0 0;
   color: var(--muted);
@@ -796,6 +947,12 @@ body.modal-open {
 
 .modal-panel.has-background-image p {
   color: #000000;
+}
+
+.modal-panel.has-background-image:not(.gift-modal) p {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .16);
 }
 
 .modal-image {
